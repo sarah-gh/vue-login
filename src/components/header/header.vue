@@ -51,7 +51,7 @@ export default {
     flex-flow: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(145, 35, 35);
+    background-color: rgba(145, 35, 35, 0.911);
     padding: 0 20px;
 }
 

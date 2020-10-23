@@ -3,20 +3,22 @@
     <div class="signup-form">
         <form @submit.prevent="onSubmit">
             <div class="input">
-                <label for="email">Mail</label>
-                <input type="email" id="email" v-model="email">
+                <label for="email">Mail*</label>
+                <input type="email" id="email" v-model="email" required>
             </div>
             <div class="input">
                 <label for="age">Your Age</label>
                 <input type="number" id="age" v-model.number="age">
             </div>
             <div class="input">
-                <label for="password">Password</label>
-                <input type="password" id="password" v-model="password">
+                <label for="password">Password*</label>
+
+                <input type="password" id="password" v-model="password" required>
             </div>
             <div class="input">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" v-model="confirmPassword">
+                <label for="confirm-password">Confirm Password*</label>
+                <p class="red" v-if="errorPassword">this field not correct</p>
+                <input type="password" id="confirm-password" v-model="confirmPassword" required>
             </div>
             <div class="input">
                 <label for="country">Country</label>
@@ -60,9 +62,12 @@ export default {
             confirmPassword: '',
             country: 'usa',
             hobbyInputs: [],
-            terms: false
+            terms: false,
+            errorEmail: false,
+            errorPassword: false
         }
     },
+
     methods: {
         onAddHobby() {
             const newHobby = {
@@ -71,21 +76,28 @@ export default {
             }
             this.hobbyInputs.push(newHobby)
         },
+
         onDeleteHobby(id) {
             this.hobbyInputs = this.hobbyInputs.filter(hobby => hobby.id !== id)
         },
         onSubmit() {
-            const formData = {
-                email: this.email,
-                age: this.age,
-                password: this.password,
-                confirmPassword: this.confirmPassword,
-                country: this.country,
-                hobbies: this.hobbyInputs.map(hobby => hobby.value),
-                terms: this.terms
+            if (this.password != this.confirmPassword) {
+                this.errorPassword = true;
             }
-            console.log(formData)
-            this.$store.dispatch('signup', formData)
+            if (this.email != '' && this.password != '' && this.password === this.confirmPassword) {
+                const formData = {
+                    email: this.email,
+                    age: this.age,
+                    password: this.password,
+                    confirmPassword: this.confirmPassword,
+                    country: this.country,
+                    hobbies: this.hobbyInputs.map(hobby => hobby.value),
+                    terms: this.terms
+                }
+                console.log(formData)
+                this.$store.dispatch('signup', formData)
+            }
+
         }
     }
 }
@@ -98,7 +110,11 @@ export default {
     border: 1px solid #eee;
     padding: 20px;
     box-shadow: 0 2px 3px #ccc;
-    text-align: start;
+}
+
+.red {
+    color: rgb(173, 0, 0);
+    font-size: 13px;
 }
 
 .input {
@@ -109,6 +125,7 @@ export default {
     display: block;
     color: #4e4e4e;
     margin-bottom: 6px;
+    font-weight: bold;
 }
 
 .input.inline label {
@@ -131,6 +148,19 @@ export default {
     outline: none;
     border: 1px solid #521751;
     background-color: #eee;
+    border: 1px solid green !important;
+    box-shadow: 0 0 3px green !important;
+    -moz-box-shadow: 0 0 3px green !important;
+    -webkit-box-shadow: 0 0 3px green !important;
+    outline-offset: 0px !important;
+    outline: none !important;
+}
+
+.inp {
+    border: 1px solid red !important;
+    box-shadow: 0 0 3px red !important;
+    -moz-box-shadow: 0 0 3px red !important;
+    -webkit-box-shadow: 0 0 3px red !important;
 }
 
 .input select {
