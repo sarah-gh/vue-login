@@ -5,6 +5,9 @@ import axios from 'axios'
 import router from './router'
 import store from './store'
 
+// import VueCarousel from 'vue-carousel';
+// Vue.use(VueCarousel);
+
 axios.defaults.baseURL = 'https://sara-9a2c8.firebaseio.com'
 axios.defaults.headers.get['Accepts'] = 'application/json'
 
