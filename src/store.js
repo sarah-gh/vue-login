@@ -34,7 +34,7 @@ export default new Vuex.Store({
         },
         signup({ commit, dispatch }, authData) {
             console.log(authData);
-            axios.post('/accounts:accounts:signUp?key=AIzaSyD4DwHT3qkq8xFhnRRpUgHTll--7w7Wxz0', {
+            axios.post('/accounts:signUp?key=AIzaSyD4DwHT3qkq8xFhnRRpUgHTll--7w7Wxz0', {
                     email: authData.email,
                     password: authData.password,
                     returnSecureToken: true
