@@ -1,5 +1,6 @@
 <template>
 <div id="signin">
+    <h2>To sign in, vpn must be enabled</h2>
     <div class="signin-form">
         <form @submit.prevent="onSubmit">
             <div class="input">
@@ -50,6 +51,14 @@ export default {
     padding: 20px;
     box-shadow: 0 2px 3px #ccc;
     text-align: start;
+}
+
+h2 {
+    font-family: 'PT Sans Narrow', sans-serif;
+    padding: 20px;
+    font-size: 30px;
+    background-color: rgb(219, 219, 219);
+    text-align: center;
 }
 
 .input {
