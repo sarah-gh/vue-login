@@ -76,7 +76,6 @@ export default {
 </script>
 
 <style scoped>
-/* FADE IN */
 .fade-enter-active {
     transition: opacity 1s;
 }
@@ -85,7 +84,6 @@ export default {
     opacity: 0;
 }
 
-/* GO TO NEXT SLIDE */
 .slide-next-enter-active,
 .slide-next-leave-active {
     transition: transform 0.5s ease-in-out;
@@ -99,7 +97,6 @@ export default {
     transform: translate(-100%);
 }
 
-/* GO TO PREVIOUS SLIDE */
 .slide-prev-enter-active,
 .slide-prev-leave-active {
     transition: transform 0.5s ease-in-out;
@@ -113,7 +110,6 @@ export default {
     transform: translate(100%);
 }
 
-/* SLIDES CLASSES */
 .blue {
     background: #4a69bd;
 }
@@ -126,7 +122,6 @@ export default {
     background: #f6b93b;
 }
 
-/* SLIDER STYLES */
 body {
     overflow: hidden;
     margin: 0;
@@ -136,9 +131,10 @@ body {
 }
 
 #slider {
-    width: 100%;
+    width: 94%;
     height: 70vh;
     position: relative;
+    margin: 0 auto;
 }
 
 .slide {
@@ -152,6 +148,7 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    margin: 20px 0 0 0;
 }
 
 .btn {
